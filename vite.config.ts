@@ -6,9 +6,25 @@ import { VitePWA } from 'vite-plugin-pwa'
 export default defineConfig({
   plugins: [react(), VitePWA({
     registerType: 'autoUpdate',
-    strategies: 'injectManifest',
-    srcDir: 'src',
-    filename: 'sw.js',
+    workbox: {
+      runtimeCaching: [
+        {
+          urlPattern: /^https:\/\/api\.openweathermap\.org\/.*/i,
+          handler: 'NetworkFirst',
+          method: 'GET',
+          options: {
+            cacheName: 'weather-cache',
+            expiration: {
+              maxEntries: 10,
+              maxAgeSeconds: 60 * 60 * 24 * 365 // <== 365 days
+            },
+            cacheableResponse: {
+              statuses: [0, 200]
+            }
+          }
+        },
+      ]
+    },
     manifest: {
       theme_color: "#f69435",
       background_color: "#f69435",
