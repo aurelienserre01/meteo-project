@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 
 import './App.css'
 import api from "./api";
-import { myGetToken } from './firebase';
+import firebase from './firebase'
 interface weatherData {
   name: string
   main: {
@@ -20,7 +20,7 @@ function App() {
     const onInit= async () => {
       try {
         const [token, json] = await Promise.all([
-          myGetToken(),
+          firebase.myGetToken(),
           api.getWeather('1', '1'),
         ])
         setWeather(json)
@@ -37,6 +37,7 @@ function App() {
     <>
       {weather && weather.weather &&
         <div>
+          <div>{isTokenFound}</div>
           <h1>{weather.name}</h1>
           <div>{weather.main.temp} °C</div>
           <div>{weather.main.temp_max} °C</div>
