@@ -4,7 +4,7 @@ import './App.css'
 import api from "./api";
 
 function App() {
-  const [weather, setWeather] = useState({})
+  const [weather, setWeather] = useState({} as any)
 
   useEffect(() => {
     api.getWeather('1', '1').then((json) => {
