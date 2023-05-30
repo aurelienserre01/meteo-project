@@ -21,7 +21,7 @@ function App() {
         <div>{weather.main?.temp} °C</div>
         <div>{weather.main?.temp_max} °C</div>
         <div>{weather.main?.temp_min} °C</div>
-        <div>{weather.weather[0].description}</div>
+        <div>{weather.weather[0]?.description}</div>
       </div>
       }
     </>
