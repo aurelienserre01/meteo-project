@@ -12,8 +12,8 @@ export default defineConfig({
       display: "fullscreen",
       scope: "/",
       start_url: "/",
-      name: "morpion",
-      short_name: "morpion",
+      name: "Application météo",
+      short_name: "Application météo",
       icons: [
         {
           "src": "/icon-192x192.png",

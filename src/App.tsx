@@ -1,33 +1,29 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useEffect, useState } from 'react'
+
 import './App.css'
+import api from "./api";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [weather, setWeather] = useState({})
+
+  useEffect(() => {
+    api.getWeather('1', '1').then((json) => {
+      setWeather(json)
+      console.log(weather)
+    });
+  }, []);
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      {weather && 
+      <div> 
+        <h1>{weather.name}</h1>
+        <div>{weather.main?.temp} °C</div>
+        <div>{weather.main?.temp_max} °C</div>
+        <div>{weather.main?.temp_min} °C</div>
+        <div>{weather.weather[0].description}</div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      }
     </>
   )
 }
