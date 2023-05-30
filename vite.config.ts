@@ -6,7 +6,7 @@ import { VitePWA } from 'vite-plugin-pwa'
 export default defineConfig({
   plugins: [react(), VitePWA({
     registerType: 'autoUpdate',
-    filename: 'sw.js',
+    filename: '/sw.js',
     strategies: 'injectManifest',
     srcDir: '/src',
     manifest: {
