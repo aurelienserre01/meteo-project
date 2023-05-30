@@ -8,7 +8,7 @@ export default defineConfig({
     registerType: 'autoUpdate',
     filename: 'sw.js',
     strategies: 'injectManifest',
-    srcDir: 'src',
+    srcDir: '/public/sw.js',
     manifest: {
       theme_color: "#f69435",
       background_color: "#f69435",
