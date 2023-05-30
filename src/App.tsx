@@ -15,7 +15,7 @@ function App() {
 
   return (
     <>
-      {weather && weather.weather[0] &&
+      {weather && weather.weather &&
       <div> 
         <h1>{weather.name}</h1>
         <div>{weather.main?.temp} °C</div>
