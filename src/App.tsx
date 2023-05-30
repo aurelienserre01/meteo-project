@@ -8,8 +8,8 @@ function App() {
 
   useEffect(() => {
     api.getWeather('1', '1').then((json) => {
+      console.log(json)
       setWeather(json)
-      console.log(weather)
     });
   }, []);
 

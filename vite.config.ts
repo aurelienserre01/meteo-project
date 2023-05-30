@@ -6,6 +6,9 @@ import { VitePWA } from 'vite-plugin-pwa'
 export default defineConfig({
   plugins: [react(), VitePWA({
     registerType: 'autoUpdate',
+    filename: 'sw.js',
+    strategies: 'injectManifest',
+    srcDir: 'src',
     manifest: {
       theme_color: "#f69435",
       background_color: "#f69435",
@@ -36,6 +39,6 @@ export default defineConfig({
           "type": "image/png"
         }
       ]
-    }
+    },
   })],
 })
