@@ -1,9 +1,9 @@
 function api() {
     const getWeather = (lon: string, lat: string) => {
-        const apiKey = 'df46159fad2b7459478211bd79fbcae3'
+        const apiKey = import.meta.env.VITE_TOKEN_OPENWEATHER
         lon = '6.129384'
         lat = '45.899247'
-        console.log(lon + ' ' +  lat)
+        console.log(apiKey)
       return fetch("https://api.openweathermap.org/data/2.5/weather?lat="+lat+"&lon="+lon+"&lang=fr&appid="+ apiKey+'&units=metric',{method: "GET"}
       ).then((res) => res.json());
     };
